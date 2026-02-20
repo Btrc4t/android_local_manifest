@@ -27,10 +27,15 @@ curl -o .repo/local_manifests/manifest_clockworkpi_uconsole.xml -L https://raw.g
 curl -o .repo/local_manifests/remove_projects.xml -L https://raw.githubusercontent.com/Btrc4t/android_local_manifest/android-16.0/remove_projects.xml
 ```
 
+Instead of curl commands, you can clone this repo, which adds all manifests, including one for utilities:
+```
+git clone https://github.com/Btrc4t/android_local_manifest .repo/local_manifests/
+```
+
 4. Sync source code:
 
 ```
-repo sync
+repo sync -j $(nproc)
 ```
 
 5. Setup Android build environment:
@@ -78,12 +83,14 @@ make bootimage systemimage vendorimage -j$(nproc)
 ./rpi5-mkimg.sh
 ```
 
-Also look into [Linux kernel build instructions](https://github.com/raspberry-vanilla/android_kernel_manifest/tree/android-16.0).
+Also look into [Linux kernel build instructions](https://github.com/Btrc4t/android_kernel_manifest/tree/android-16.0).
 
 ***
 
 ### Issues:
 
+- [ClockworkPi uConsole Android](https://github.com/Btrc4t/android_local_manifest/issues)
+- [ClockworkPi uConsole Linux kernel](https://github.com/Btrc4t/android_kernel_manifest/issues)
 - [Android](https://github.com/raspberry-vanilla/android_local_manifest/issues)
 - [Linux kernel](https://github.com/raspberry-vanilla/android_kernel_manifest/issues)
 
